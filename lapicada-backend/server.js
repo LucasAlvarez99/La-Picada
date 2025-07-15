@@ -11,13 +11,15 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
+
 // Conexión a MySQL
 const db = mysql.createConnection({
-  host: 'mysql://root:myfsudzUttcJFdyrIrZGFODkQgBewpwS@mainline.proxy.rlwy.net:23458/railway',
+  host: 'mainline.proxy.rlwy.net',
+  port: 23458,
   user: 'root',
   password: 'myfsudzUttcJFdyrIrZGFODkQgBewpwS',
   database: 'railway',
-  port: 23458
+  
 });
 
 db.connect(err => {
