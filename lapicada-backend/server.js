@@ -14,11 +14,11 @@ app.use(bodyParser.json());
 
 // Conexión a MySQL
 const db = mysql.createConnection({
-  host: 'mysql.railway.internal',           // MYSQLHOST
-  port: 3306,                               // MYSQLPORT
-  user: 'root',                             // MYSQLUSER
-  password: 'myfsudzUttcJFdyrIrZGFODkQgBewpwS', // MYSQLPASSWORD o MYSQL_ROOT_PASSWORD
-  database: 'railway'                       // MYSQL_DATABASE
+  host: 'mainline.proxy.rlwy.net',
+  port: 23458,
+  user: 'root',
+  password: 'myfsudzUttcJFdyrIrZGFODkQgBewpwS',
+  database: 'railway'
 });
 
 db.connect(err => {
