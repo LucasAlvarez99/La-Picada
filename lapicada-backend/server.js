@@ -14,10 +14,11 @@ app.use(bodyParser.json());
 
 // Conexión a MySQL
 const db = mysql.createConnection({
-  host: 'localhost',
+  host: 'mysql://root:myfsudzUttcJFdyrIrZGFODkQgBewpwS@mainline.proxy.rlwy.net:23458/railway',
   user: 'root',
-  password: '',
-  database: 'picada'
+  password: 'myfsudzUttcJFdyrIrZGFODkQgBewpwS',
+  database: 'railway',
+  port: 23458
 });
 
 db.connect(err => {
