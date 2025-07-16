@@ -41,21 +41,24 @@
   </main>
 
   <script>
-    function verPassword() {
-      const pass = document.getElementById('contrasena');
-      pass.type = pass.type === 'password' ? 'text' : 'password';
-    }
+  const API = 'https://la-picada-backend.onrender.com';
 
-    function recuperarClave() {
-      alert('Se enviará un mail al dueño del sitio para restablecer la contraseña.');
-    }
+  function verPassword() {
+    const pass = document.getElementById('contrasena');
+    pass.type = pass.type === 'password' ? 'text' : 'password';
+  }
 
-    document.getElementById('loginForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const usuario = document.getElementById('usuario').value;
-      const contrasena = document.getElementById('contrasena').value;
+  function recuperarClave() {
+    alert('Se enviará un mail al dueño del sitio para restablecer la contraseña.');
+  }
 
-      const res = await fetch('http://localhost:3000/login', {
+  document.getElementById('loginForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const usuario = document.getElementById('usuario').value;
+    const contrasena = document.getElementById('contrasena').value;
+
+    try {
+      const res = await fetch(`${API}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ usuario, contrasena })
@@ -70,8 +73,13 @@
       } else {
         alert('Usuario o contraseña incorrectos');
       }
-    });
-  </script>
+    } catch (err) {
+      console.error('Error de conexión:', err);
+      alert('Hubo un error al intentar iniciar sesión.');
+    }
+  });
+</script>
+
 
 </body>
 </html>

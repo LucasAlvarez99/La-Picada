@@ -54,8 +54,10 @@
 <script src="js/carrito.js"></script>
 <script src="js/buscador.js"></script>
 <script>
+  const API = 'https://la-picada-backend.onrender.com';
+
   // Cargar productos desde backend
-  fetch('http://localhost:3000/productos?categoria=minorista')
+  fetch(`${API}/productos?categoria=minorista`)
     .then(res => res.json())
     .then(productos => {
       const contenedor = document.getElementById('contenedorProductos');
@@ -72,6 +74,9 @@
           </div>`;
         contenedor.appendChild(card);
       });
+    })
+    .catch(error => {
+      console.error('Error al cargar productos minoristas:', error);
     });
 </script>
 </body>

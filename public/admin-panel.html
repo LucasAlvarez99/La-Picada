@@ -73,6 +73,8 @@
 
 <!-- JS -->
 <script>
+  const API = 'https://la-picada-backend.onrender.com';
+
   // Verificar login
   if (!localStorage.getItem('admin')) {
     window.location.href = 'login.html';
@@ -106,22 +108,28 @@
       imagen: document.getElementById('imagen').value
     };
 
-    const res = await fetch('http://localhost:3000/productos', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(nuevoProducto)
-    });
+    try {
+      const res = await fetch(`${API}/productos`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(nuevoProducto)
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (data.success) {
-      alert('Producto guardado correctamente');
-      this.reset();
-    } else {
-      alert('Error al guardar producto');
+      if (data.success) {
+        alert('Producto guardado correctamente');
+        this.reset();
+      } else {
+        alert('Error al guardar producto');
+      }
+    } catch (err) {
+      console.error('Error de conexión:', err);
+      alert('No se pudo conectar al servidor');
     }
   });
 </script>
+
 
 </body>
 </html>

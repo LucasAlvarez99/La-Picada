@@ -54,7 +54,9 @@
 <script src="js/carrito.js"></script>
 <script src="js/buscador.js"></script>
 <script>
-  fetch('http://localhost:3000/productos?categoria=promociones')
+  const API = 'https://la-picada-backend.onrender.com';
+
+  fetch(`${API}/productos?categoria=promociones`)
     .then(res => res.json())
     .then(productos => {
       const contenedor = document.getElementById('contenedorProductos');
@@ -71,7 +73,11 @@
           </div>`;
         contenedor.appendChild(card);
       });
+    })
+    .catch(error => {
+      console.error('Error al cargar productos:', error);
     });
 </script>
+
 </body>
 </html>
