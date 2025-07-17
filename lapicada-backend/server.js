@@ -27,11 +27,11 @@ db.connect(err => {
 });
 
 // Servir archivos estáticos
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Página principal
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname,'public', 'index.html'));
+  res.sendFile(path.join(__dirname,'../public', 'index.html'));
 });
 
 // 🔎 Obtener productos por categoría
